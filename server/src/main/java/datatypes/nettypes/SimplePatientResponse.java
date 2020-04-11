@@ -1,6 +1,6 @@
 package datatypes.nettypes;
 
-import datatypes.Patient;
+import datatypes.dbtypes.Patient;
 
 public class SimplePatientResponse extends  AbstractResponse {
 

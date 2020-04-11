@@ -1,6 +1,6 @@
 package core;
 
-import datatypes.Patient;
+import datatypes.dbtypes.Patient;
 import db.MySQLConnection;
 
 public class Core {
@@ -10,11 +10,4 @@ public class Core {
     this._dbcon = dbcon;
   }
 
-  public Patient handlePatientRequestById(int patientID){
-    return this._dbcon.getPatientById(patientID);
-  }
-
-  public Patient handleAddPatient(Patient patient) {
-    return this._dbcon.addPatient(patient);
-  }
 }

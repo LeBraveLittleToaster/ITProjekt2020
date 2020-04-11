@@ -1,0 +1,45 @@
+DROP TABLE if exists Users;
+DROP TABLE if exists Patients;
+DROP Table if exists Projekts;
+DROP TABLE if exists ProjektData;
+
+CREATE TABLE Users (
+    id int NOT NULL auto_increment,
+    userID varchar(255) NOT NULL,
+    crDate varchar(255) NOT NULL,
+    roleID int NOT NULL,
+    loginname varchar(255) NOT NULL,
+    pwhash varchar(255) NOT NULL,
+    primary key(id)
+);
+CREATE TABLE Patients (
+    id int NOT NULL auto_increment,
+    userID varchar(255) NOT NULL,
+    lastname varchar(255) NOT NULL,
+    firstname varchar(255) NOT NULL,
+    street varchar(255),
+    plz varchar(255),
+    postcode varchar(255),
+    cityname varchar(255),
+    primary key(id)
+);
+CREATE TABLE Projekts (
+	id int NOT NULL auto_increment,
+    userID varchar(255) NOT NULL,
+    projektID varchar(255) NOT NULL,
+    projektname varchar(255) NOT NULL,
+    crDate varchar(255) NOT NULL,
+    primary key(id)
+);
+
+CREATE TABLE ProjektData (
+	id int NOT NULL auto_increment,
+    projektID varchar(255) NOT NULL,
+    sysrr decimal,
+    sysdia decimal,
+    pulse decimal,
+    weightkg decimal,
+    bmi decimal,
+    commentar varchar(255),
+    primary key(id)
+);
