@@ -47,7 +47,7 @@ class Loginpage extends Component {
   handleLogin = async () => {
     console.log("login");
     try{
-    const response = await axios.get("http://localhost:8080/login", { headers: { 'username': 'root', 'password': 'root' } });
+    const response = await axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/login");
     console.log(response.data)
     }catch(e){
       console.log(e)
