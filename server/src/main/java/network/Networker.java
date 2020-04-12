@@ -2,24 +2,29 @@ package network;
 
 import com.google.gson.Gson;
 import core.Core;
-import datatypes.dbtypes.Patient;
-import datatypes.nettypes.SimplePatientResponse;
+import datatypes.dbtypes.User;
+import datatypes.nettypes.SimpleUserResponse;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.RoutingHandler;
+import io.undertow.util.HeaderMap;
+import io.undertow.util.HttpString;
+
+import javax.security.auth.login.Configuration;
 
 public class Networker {
 
-  private static final String QUERY_PATIENT_ID = "patientID";
+  private static final String QUERY_PARAM_TOKEN = "token";
+  private static final String HEADER_USERNAME = "username";
+  private static final String HEADER_PASSWORD = "password";
   private static int PORT = 8080;
   private final Core _core;
   private Undertow _server;
   private Gson _gson;
 
   private final HttpHandler ROUTES = new RoutingHandler()
-      .get("/patient", this::handlePatientRequest);
-      //.post("/patient", this::handlePatientInsert);
+      .get("/login", this::handleLoginRequest);
 
   public Networker(Core core) {
     this._core = core;
@@ -32,15 +37,24 @@ public class Networker {
     _server.start();
   }
 
-  private void handlePatientRequest(HttpServerExchange exchange) {
-    /*
-    int patientID = Integer.parseInt(exchange.getQueryParameters().get(QUERY_PATIENT_ID).getFirst());
-    Patient patient = this._core.handlePatientRequestById(patientID);
-    if (patient == null) {
-      exchange.getResponseSender().send(_gson.toJson(new SimplePatientResponse(false, null)));
-    } else {
-      exchange.getResponseSender().send(_gson.toJson(new SimplePatientResponse(true, patient)));
+  private void handleLoginRequest(HttpServerExchange exchange){
+    exchange.getResponseHeaders().put(new HttpString("Access-Control-Allow-Origin"), "*");
+    exchange.getResponseHeaders().put(new HttpString("Access-Control-Allow-Headers"), "origin, content-type, accept, authorization, auth-token, username, password");
+    exchange.getResponseHeaders().put(new HttpString("Access-Control-Allow-Credentials"), "true");
+    exchange.getResponseHeaders().put(new HttpString("Access-Control-Allow-Methods"), "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+    exchange.getResponseHeaders().put(new HttpString("Access-Control-Max-Age"), "1209600");
+    SimpleUserResponse rsp = new SimpleUserResponse(false);
+    if(exchange.getRequestHeaders().contains(HEADER_USERNAME)
+        && exchange.getRequestHeaders().contains(HEADER_PASSWORD)){
+      String uname = exchange.getRequestHeaders().get(HEADER_USERNAME).getFirst();
+      String pwhash = exchange.getRequestHeaders().get(HEADER_PASSWORD).getFirst();
+      rsp = _core.handleLogin(uname, pwhash);
     }
-    */
+    exchange.getResponseSender().send(_gson.toJson(rsp));
+  }
+
+  private static void setupResponseHeaders(final HttpServerExchange exchange) {
+    final HeaderMap headerMap = exchange.getResponseHeaders();
+    headerMap.add(new HttpString("Access-Control-Allow-Origin"), "*");
   }
 }

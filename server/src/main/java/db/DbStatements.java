@@ -65,4 +65,19 @@ public class DbStatements {
     statement.setString(7, projektData.getCommentar());
     return statement;
   }
+
+  public static PreparedStatement createGetUserByCredentialsStatement(Connection con, String username, String pwhash) throws SQLException {
+    final String SELECT_USER_STATEMENT = "SELECT * FROM Users WHERE loginname=? AND pwhash=?";
+    PreparedStatement statement = con.prepareStatement(SELECT_USER_STATEMENT);
+    statement.setString(1, username);
+    statement.setString(2, pwhash);
+    return statement;
+  }
+
+  public static PreparedStatement createGetPatientByUserIDStatement(Connection con, String userID) throws SQLException {
+    final String SELECT_PATIENT_STATEMENT = "SELECT p.id, p.userID, p.lastname, p.firstname, p.street, p.plz, p.postcode, p.cityname FROM Users AS u JOIN Patients AS p ON u.userID=p.userID WHERE u.userID=?";
+    PreparedStatement statement = con.prepareStatement(SELECT_PATIENT_STATEMENT);
+    statement.setString(1, userID);
+    return statement;
+  }
 }

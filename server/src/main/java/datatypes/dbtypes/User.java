@@ -1,12 +1,23 @@
 package datatypes.dbtypes;
 
 public class User {
+
+  public static final int ROLE_ID_PATIENT = 10;
+  public static final int ROLE_ID_ASSISTENT= 20;
+  public static final int ROLE_ID_DCOTOR = 30;
+
   private int id;
   private String userID;
   /**
    * IOS 8601
    */
   private String crDate;
+  /**
+   * RoleIDs:
+   * Patient = 10
+   * Assistent = 20
+   * Doctor = 30
+   */
   private int roleID;
   private String loginname;
   private String pwhash;
