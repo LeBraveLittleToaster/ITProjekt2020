@@ -16,9 +16,10 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(20),
     fontWeight: theme.typography.fontWeightBold,
+    width: "100%"
   },
   sub_heading: {
-    fontSize: theme.typography.pxToRem(13),
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: theme.typography.fontWeightRegular,
   },
   details_sub_heading: {
@@ -45,14 +46,13 @@ export default function ExpansionInsertView(props) {
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel onClick={() => console.log("Opening")}>
+      <ExpansionPanel variant="outlined">
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading} component="h1">Neuer Eintrag</Typography>  
-          <Typography className={classes.sub_heading} component="h1">Öffnen um einzutragen...</Typography>
+          <Typography className={classes.sub_heading} gutterBottom>Neuer Eintrag</Typography>  
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
             <Grid container spacing={3} alignItems="center">

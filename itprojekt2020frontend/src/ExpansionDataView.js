@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightBold,
   },
   sub_heading: {
-    fontSize: theme.typography.pxToRem(13),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(20),
+    fontWeight: theme.typography.fontWeightBold,
   }
 }));
 
@@ -38,14 +38,13 @@ class ExpansionDataView extends Component {
     const response = axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/patient/projekts/data",
       { headers: { 'token': this.props.store.AppStore.token, 'projektID': this.props.value.projektID } });
     response.then((response) => {
+      console.log(response)
       if (response.status === 200 && response.data.isSuccess === true) {
+        console.log(response.data)
         this.setState({data:response.data.projektData})
-        
       }
     })
-
   };
-
 
   render() {
     const { classes } = this.props;
@@ -58,19 +57,15 @@ class ExpansionDataView extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading} component="h2">Projekt</Typography>
-            <Typography className={classes.sub_heading} component="h2">{this.props.value.projektname}</Typography>
+            <Typography className={classes.heading} gutterBottom>{this.props.value.projektname}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Grid container spacing={2}>
               <Grid item xs={12} className={classes.listitem}>
                 <ExpansionInsertView />
               </Grid>
-              <Grid item xs={12}><Typography variant="h6" component="h2">Projekt Daten</Typography></Grid>
-              {this.state.data.map(function (d, idx) {
-                return (<Grid item xs={12} className={classes.listitem}><ProjectDataView key={idx} data={d} /></Grid>)
-              })}
-
+              <Grid item xs={12}><Typography variant="h6" gutterBottom>Projekt Daten</Typography></Grid>
+              <ProjectDataView/>
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>

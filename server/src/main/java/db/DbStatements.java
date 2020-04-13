@@ -90,7 +90,7 @@ public class DbStatements {
   }
 
   public static PreparedStatement createGetProjektDataByProjektID(Connection con, String projektID, String userID) throws SQLException {
-    final String SELECT_STATEMENT = "SELECT pd.id, pd.projektID, pd.sysrr, pd.sysdia, pd.pulse, pd.weightkg, pd.bmi, pd.commentar\n" +
+    final String SELECT_STATEMENT = "SELECT pd.id, pd.projektID, pd.sysrr, pd.sysdia, pd.pulse, pd.weightkg, pd.bmi, pd.commentar, pd.commentar\n" +
         "FROM ProjektData AS pd JOIN Projekts AS p ON pd.projektID=p.projektID WHERE p.userID=? AND p.projektID=?";
     PreparedStatement statement = con.prepareStatement(SELECT_STATEMENT);
     statement.setString(1, userID);

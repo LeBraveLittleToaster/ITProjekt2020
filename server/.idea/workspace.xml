@@ -7,23 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb86b45c-e891-4c72-8038-065ee974cd25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/nettypes/SimpleProjektDataResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/network/ProjektsConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SetupDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../itprojekt2020frontend/src/ExpansionDataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/../itprojekt2020frontend/src/ExpansionDataView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../itprojekt2020frontend/src/ExpansionInsertView.js" beforeDir="false" afterPath="$PROJECT_DIR$/../itprojekt2020frontend/src/ExpansionInsertView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../itprojekt2020frontend/src/PatientView.js" beforeDir="false" afterPath="$PROJECT_DIR$/../itprojekt2020frontend/src/PatientView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../itprojekt2020frontend/src/ProjektDataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/../itprojekt2020frontend/src/ProjektDataView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/Projekt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/Projekt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/ProjektData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/ProjektData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/db/DbStatements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/DbStatements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/MySQLConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -88,25 +72,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SetupDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+            <state relative-caret-position="220">
+              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3097#3098#0" expanded="true" />
-                <element signature="e#3141#3142#0" expanded="true" />
+                <element signature="e#3132#3133#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/DbStatements.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+            <state relative-caret-position="155">
+              <caret line="92" column="143" selection-start-line="92" selection-start-column="143" selection-end-line="92" selection-end-column="143" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/MySQLConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="114" column="27" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
+            <state relative-caret-position="84">
+              <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
               <folding>
                 <element signature="e#3531#3532#0" expanded="true" />
                 <element signature="e#3553#3554#0" expanded="true" />
@@ -180,9 +163,9 @@
         <option value="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/Projekt.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/MySQLConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/datatypes/dbtypes/ProjektData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/db/DbStatements.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestQueries.java" />
         <option value="$PROJECT_DIR$/src/test/java/SetupDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/DbStatements.java" />
       </list>
     </option>
   </component>
@@ -326,7 +309,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586798086019" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586798918589" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/core" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -355,7 +338,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SetupDB">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.34">
     <configuration name="SetupDB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="itprojekt.server.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -507,17 +490,11 @@
       <updated>1586468040072</updated>
       <workItem from="1586468045525" duration="7752000" />
       <workItem from="1586596073270" duration="15194000" />
-      <workItem from="1586764088842" duration="18408000" />
+      <workItem from="1586764088842" duration="19306000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SetupDB_testInsertProjekt - 2020.04.13 at 18h 59m 07s.xml">
-      <configuration name="SetupDB.testInsertProjekt" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SetupDB - 2020.04.13 at 19h 00m 10s.xml">
-      <configuration name="SetupDB" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SetupDB - 2020.04.13 at 19h 02m 01s.xml">
       <configuration name="SetupDB" configurationId="JUnit" />
     </history-entry>
@@ -542,9 +519,15 @@
     <history-entry file="SetupDB - 2020.04.13 at 19h 12m 42s.xml">
       <configuration name="SetupDB" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SetupDB - 2020.04.13 at 19h 13m 37s.xml">
+      <configuration name="SetupDB" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SetupDB - 2020.04.13 at 19h 14m 34s.xml">
+      <configuration name="SetupDB" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41354000" />
+    <option name="totallyTimeSpent" value="42252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
@@ -790,17 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/MySQLConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="114" column="27" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
-          <folding>
-            <element signature="e#3531#3532#0" expanded="true" />
-            <element signature="e#3553#3554#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/datatypes/dbtypes/ProjektData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -814,16 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/DbStatements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestQueries.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -833,12 +795,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SetupDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+        <state relative-caret-position="220">
+          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3097#3098#0" expanded="true" />
-            <element signature="e#3141#3142#0" expanded="true" />
+            <element signature="e#3132#3133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/MySQLConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
+          <folding>
+            <element signature="e#3531#3532#0" expanded="true" />
+            <element signature="e#3553#3554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/DbStatements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="92" column="143" selection-start-line="92" selection-start-column="143" selection-end-line="92" selection-end-column="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
