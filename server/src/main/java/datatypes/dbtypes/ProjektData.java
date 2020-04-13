@@ -9,8 +9,10 @@ public class ProjektData {
   private float weightkg;
   private float bmi;
   private String commentar;
+  private String crDate;
 
-  public ProjektData(int id, String projekteID, float sysrr, float sysdia, float pulse, float weightkg, float bmi, String commentar) {
+
+  public ProjektData(int id, String projekteID, float sysrr, float sysdia, float pulse, float weightkg, float bmi, String commentar, String crDate) {
     this.id = id;
     this.projekteID = projekteID;
     this.sysrr = sysrr;
@@ -19,6 +21,17 @@ public class ProjektData {
     this.weightkg = weightkg;
     this.bmi = bmi;
     this.commentar = commentar;
+    this.crDate = crDate;
+  }
+
+  public ProjektData(float sysrr, float sysdia, float pulse, float weightkg, float bmi, String commentar, String crDate) {
+    this.sysrr = sysrr;
+    this.sysdia = sysdia;
+    this.pulse = pulse;
+    this.weightkg = weightkg;
+    this.bmi = bmi;
+    this.commentar = commentar;
+    this.crDate = crDate;
   }
 
   public int getId() {
@@ -83,5 +96,12 @@ public class ProjektData {
 
   public void setCommentar(String commentar) {
     this.commentar = commentar;
+  }
+  public String getCrDate() {
+    return crDate;
+  }
+
+  public void setCrDate(String crDate) {
+    this.crDate = crDate;
   }
 }

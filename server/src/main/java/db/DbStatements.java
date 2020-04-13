@@ -53,16 +53,17 @@ public class DbStatements {
 
   public static PreparedStatement createInsertProjektDataStatement(Connection con, ProjektData projektData) throws SQLException {
     final String INSERT_USER_STATEMENT =
-        "INSERT INTO ProjektData (projektID, sysrr, sysdia, pulse, weightkg, bmi, commentar)" +
-            "VALUES (?,?,?,?,?,?,?)";
+        "INSERT INTO ProjektData (projektID, sysrr, sysdia, pulse, weightkg, bmi, commentar, crDate)" +
+            "VALUES (?,?,?,?,?,?,?,?)";
     PreparedStatement statement = con.prepareStatement(INSERT_USER_STATEMENT);
     statement.setString(1, projektData.getProjekteID());
-    statement.setFloat(2, projektData.getSysrr());
-    statement.setFloat(3, projektData.getSysdia());
-    statement.setFloat(4, projektData.getPulse());
-    statement.setFloat(5, projektData.getWeightkg());
-    statement.setFloat(6, projektData.getBmi());
+    statement.setDouble(2, projektData.getSysrr());
+    statement.setDouble(3, projektData.getSysdia());
+    statement.setDouble(4, projektData.getPulse());
+    statement.setDouble(5, projektData.getWeightkg());
+    statement.setDouble(6, projektData.getBmi());
     statement.setString(7, projektData.getCommentar());
+    statement.setString(8, projektData.getCrDate());
     return statement;
   }
 
@@ -82,9 +83,18 @@ public class DbStatements {
   }
 
   public static PreparedStatement createGetProjektsByUserID(Connection con, String userID) throws SQLException {
-    final String SELECT_PATIENT_STATEMENT = "SELECT id, userID, projektID, projektname, crDate FROM Projekts p WHERE userID=?";
+    final String SELECT_PATIENT_STATEMENT = "SELECT id, userID, projektID, projektname, crDate FROM Projekts WHERE userID=?";
     PreparedStatement statement = con.prepareStatement(SELECT_PATIENT_STATEMENT);
     statement.setString(1, userID);
+    return statement;
+  }
+
+  public static PreparedStatement createGetProjektDataByProjektID(Connection con, String projektID, String userID) throws SQLException {
+    final String SELECT_STATEMENT = "SELECT pd.id, pd.projektID, pd.sysrr, pd.sysdia, pd.pulse, pd.weightkg, pd.bmi, pd.commentar\n" +
+        "FROM ProjektData AS pd JOIN Projekts AS p ON pd.projektID=p.projektID WHERE p.userID=? AND p.projektID=?";
+    PreparedStatement statement = con.prepareStatement(SELECT_STATEMENT);
+    statement.setString(1, userID);
+    statement.setString(2, projektID);
     return statement;
   }
 }

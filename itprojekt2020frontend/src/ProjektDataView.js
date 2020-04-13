@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ExpansionDataView(props) {
+export default function ProjektDataView(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant="h4">{props.data.projektname}</Typography>
+      {JSON.stringify(props.data)}
     </div>
   );
 }

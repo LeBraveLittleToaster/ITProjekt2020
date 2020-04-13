@@ -32,6 +32,14 @@ public class User {
     this.pwhash = pwhash;
   }
 
+  public User(String userID, String crDate, int roleID, String loginname, String pwhash) {
+    this.userID = userID;
+    this.crDate = crDate;
+    this.roleID = roleID;
+    this.loginname = loginname;
+    this.pwhash = pwhash;
+  }
+
   public int getId() {
     return id;
   }

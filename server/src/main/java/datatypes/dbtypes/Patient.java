@@ -22,6 +22,15 @@ public class Patient {
     this.cityname = cityname;
   }
 
+  public Patient(String lastname, String firstname, String street, String plz, String postcode, String cityname) {
+    this.lastname = lastname;
+    this.firstname = firstname;
+    this.street = street;
+    this.plz = plz;
+    this.postcode = postcode;
+    this.cityname = cityname;
+  }
+
   public int getId() {
     return id;
   }

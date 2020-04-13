@@ -18,6 +18,12 @@ public class Projekt {
     this.crDate = crDate;
   }
 
+  public Projekt(String projektID, String projektname, String crDate) {
+    this.projektID = projektID;
+    this.projektname = projektname;
+    this.crDate = crDate;
+  }
+
   public int getId() {
     return id;
   }

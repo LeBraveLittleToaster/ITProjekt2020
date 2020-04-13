@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SetupDB" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-04-13T16:57:09" hostname="DESKTOP-JJAOLKS" time="5.235">
+  <properties/>
+  <testcase name="insertProjekt" classname="SetupDB" time="0.799"/>
+  <testcase name="createTables" classname="SetupDB" time="0.374"/>
+  <testcase name="insertAndReadUserData" classname="SetupDB" time="4.061"/>
+  <system-out><![CDATA[USERID:a48354e0-e294-4ca4-90a9-6b93b01e3e3c
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -49,7 +49,7 @@ class PatientView extends Component {
     _loadHistory = async () => {
         const response = await axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/patient/projekts",
       { headers: { 'token': this.props.store.AppStore.token} });
-        if(response.status === 200 && response.data.isSuccess === true){
+        if(response.status === 200 && response.data.isSuccess === true && response.data.projekts !== undefined){
             this.setState({data: response.data.projekts});
         }
     }
@@ -62,6 +62,8 @@ class PatientView extends Component {
 
     render() {
         const { classes } = this.props;
+        let storeRef = this.props.store;
+        console.log(this.props.store);
         return (
             <div className={classes.alignItemsAndJustifyContent}>
                 {this.props.store.AppStore.token !== undefined ?
@@ -77,11 +79,8 @@ class PatientView extends Component {
                     </Grid>
                     <Grid item xs={9}>
                         <Grid container spacing={3} alignItems="flex-end">
-                            <Grid item xs={12} className={classes.listitem}>
-                                <ExpansionInsertView />
-                            </Grid>
                             {this.state.data.map(function (d, idx) {
-                                return (<Grid item xs={12} className={classes.listitem}><ExpansionDataView key={idx} value={d} /></Grid>)
+                                return (<Grid item xs={12} className={classes.listitem}><ExpansionDataView key={idx} value={d} store={storeRef} /></Grid>)
                             })}
                         </Grid>
                     </Grid>

@@ -51,11 +51,8 @@ export default function ExpansionInsertView(props) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>
-          <Typography className={classes.heading}>Neuer Eintrag</Typography>  
-          <Typography className={classes.sub_heading}>Öffnen um einzutragen...
-            </Typography>
-            </Typography>
+          <Typography className={classes.heading} component="h1">Neuer Eintrag</Typography>  
+          <Typography className={classes.sub_heading} component="h1">Öffnen um einzutragen...</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
             <Grid container spacing={3} alignItems="center">

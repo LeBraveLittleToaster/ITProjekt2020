@@ -1,11 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect, Component } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ProjectDataView from './ProjektDataView';
+import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
+import ExpansionInsertView from './ExpansionInsertView.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,29 +24,59 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ExpansionDataView(props) {
-  const classes = useStyles();
+class ExpansionDataView extends Component {
 
-  return (
-    <div className={classes.root}>
-      <ExpansionPanel onClick={() => console.log("Opening")}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>
-          <Typography className={classes.heading}>Projekt</Typography>  
-          <Typography className={classes.sub_heading}>{props.value.projektname}
-            </Typography>
-            </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            <ProjectDataView  store={props.store} data={props.value} />
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-    </div>
-  );
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+    this._build();
+  }
+  _build = () => {
+    const response = axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/patient/projekts/data",
+      { headers: { 'token': this.props.store.AppStore.token, 'projektID': this.props.value.projektID } });
+    response.then((response) => {
+      if (response.status === 200 && response.data.isSuccess === true) {
+        this.setState({data:response.data.projektData})
+        
+      }
+    })
+
+  };
+
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <ExpansionPanel /*TransitionProps={{ unmountOnExit: true }}*/ onClick={() => console.log("Opening")}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading} component="h2">Projekt</Typography>
+            <Typography className={classes.sub_heading} component="h2">{this.props.value.projektname}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Grid container spacing={2}>
+              <Grid item xs={12} className={classes.listitem}>
+                <ExpansionInsertView />
+              </Grid>
+              <Grid item xs={12}><Typography variant="h6" component="h2">Projekt Daten</Typography></Grid>
+              {this.state.data.map(function (d, idx) {
+                return (<Grid item xs={12} className={classes.listitem}><ProjectDataView key={idx} data={d} /></Grid>)
+              })}
+
+            </Grid>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
+    );
+  }
 }
+
+export default withStyles(useStyles)(ExpansionDataView);

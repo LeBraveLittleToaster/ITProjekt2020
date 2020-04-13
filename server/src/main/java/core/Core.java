@@ -2,7 +2,9 @@ package core;
 
 import datatypes.dbtypes.Patient;
 import datatypes.dbtypes.Projekt;
+import datatypes.dbtypes.ProjektData;
 import datatypes.dbtypes.User;
+import datatypes.nettypes.SimpleProjektDataResponse;
 import datatypes.nettypes.SimpleProjektResponse;
 import datatypes.nettypes.SimpleUserResponse;
 import db.MySQLConnection;
@@ -66,5 +68,13 @@ public class Core {
     }else{
       return new SimpleProjektResponse(false);
     }
+  }
+
+  public SimpleProjektDataResponse handleGetProjektData(String projektID, String userID) {
+    List<ProjektData> data =_dbcon.getProjektDataFromProjektID(projektID, userID);
+    if(data != null){
+      return new SimpleProjektDataResponse(true, data);
+    }
+    return new SimpleProjektDataResponse(false);
   }
 }

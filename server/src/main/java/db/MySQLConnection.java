@@ -3,6 +3,7 @@ package db;
 import com.mysql.cj.protocol.Resultset;
 import datatypes.dbtypes.Patient;
 import datatypes.dbtypes.Projekt;
+import datatypes.dbtypes.ProjektData;
 import datatypes.dbtypes.User;
 
 import java.sql.Connection;
@@ -17,6 +18,7 @@ public class MySQLConnection {
   private String url;
   private String username;
   private String password;
+
   private Connection _conn;
 
 
@@ -80,7 +82,7 @@ public class MySQLConnection {
     try {
       ResultSet set = DbStatements.createGetProjektsByUserID(this._conn, userID).executeQuery();
       List<Projekt> projektLst = new LinkedList<>();
-      if(set.next()) {
+      while(set.next()) {
         projektLst.add(new Projekt(
             set.getInt(1),
             set.getString(2),
@@ -94,5 +96,73 @@ public class MySQLConnection {
       e.printStackTrace();
     }
     return null;
+  }
+
+  public List<ProjektData> getProjektDataFromProjektID(String projektID, String userID) {
+    try {
+      ResultSet set = DbStatements.createGetProjektDataByProjektID(this._conn, projektID, userID).executeQuery();
+      List<ProjektData> data = new LinkedList<>();
+      while(set.next()) {
+        data.add(new ProjektData(
+            set.getInt(1),
+            set.getString(2),
+            set.getFloat(3),
+            set.getFloat(4),
+            set.getFloat(5),
+            set.getFloat(6),
+            set.getFloat(7),
+            set.getString(8),
+            set.getString(9)
+        ));
+      }
+      return data;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  public boolean insertUser(User user) {
+    try {
+      return DbStatements.createInsertUserStatement(_conn, user).execute();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  public Connection getConn() {
+    return _conn;
+  }
+
+  public boolean insertPatientData(String userID, Patient patient) {
+    patient.setUserID(userID);
+    try {
+      return DbStatements.createInsertPatientStatement(_conn, patient).execute();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  public boolean insertProject(String projektID, String userID, Projekt projekt) {
+    projekt.setProjektID(projektID);
+    projekt.setUserID(userID);
+    try {
+      return DbStatements.createInsertProjektStatement(_conn, projekt).execute();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  public boolean insertProjectData(String projektID, ProjektData projektData) {
+    projektData.setProjekteID(projektID);
+    try {
+      return DbStatements.createInsertProjektDataStatement(_conn, projektData).execute();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 }
