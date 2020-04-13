@@ -1,9 +1,13 @@
 package core;
 
 import datatypes.dbtypes.Patient;
+import datatypes.dbtypes.Projekt;
 import datatypes.dbtypes.User;
+import datatypes.nettypes.SimpleProjektResponse;
 import datatypes.nettypes.SimpleUserResponse;
 import db.MySQLConnection;
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -28,16 +32,19 @@ public class Core {
   }
 
   private final MySQLConnection _dbcon;
-  private Map<String, String> userIDTokens = new HashMap<>();
+  /**
+   * userID <-> (access) token
+   */
+  private BidiMap<String, String> userIDToken = new DualHashBidiMap<>();
 
   public String createToken(String userID){
     String token = UUID.randomUUID().toString();
-    userIDTokens.put(userID, token);
+    userIDToken.put(userID, token);
     return token;
   }
 
-  public boolean checkToken(String token){
-    return userIDTokens.containsValue(token);
+  public String checkTokenAndGetUserID(String token){
+    return userIDToken.getKey(token);
   }
 
   public SimpleUserResponse handleLogin(String uname, String pwhash) {
@@ -49,5 +56,15 @@ public class Core {
     return user != null ?
         new SimpleUserResponse(true, user, patient, createToken(user.getUserID()))
         : new SimpleUserResponse(false);
+  }
+
+
+  public SimpleProjektResponse handleGetPatientProjekts(String userID) {
+    List<Projekt> projekts = _dbcon.getProjektsFromUserID(userID);
+    if(projekts != null){
+      return new SimpleProjektResponse(true, projekts);
+    }else{
+      return new SimpleProjektResponse(false);
+    }
   }
 }

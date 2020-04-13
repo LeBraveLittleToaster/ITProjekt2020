@@ -3,11 +3,13 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { withRouter, Redirect } from 'react-router-dom';
 import CreateIcon from '@material-ui/icons/Create';
 import ListIcon from '@material-ui/icons/List';
+import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import ExpansionDataView from './ExpansionDataView.js'
 import { Typography } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import {observer} from 'mobx-react';
+import ExpansionInsertView from './ExpansionInsertView.js'
 
 const mystyle = (theme) => ({
     alignItemsAndJustifyContent: {
@@ -38,22 +40,18 @@ class PatientView extends Component {
             isInListView: true,
             isLoading: true,
             data: [
-                { sysdia: 123, sysrr: 321, bmi: 56.7 },
-                {
-                    sysdia: 123,
-                    sysrr: 323,
-                    bmi: 52.234
-                }, {
-                    sysdia: 120,
-                    sysrr: 322,
-                    bmi: 253.467
-                }
+                
             ]
         }
+        this._loadHistory();
     }
 
-    loadHistory = () => {
-
+    _loadHistory = async () => {
+        const response = await axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/patient/projekts",
+      { headers: { 'token': this.props.store.AppStore.token} });
+        if(response.status === 200 && response.data.isSuccess === true){
+            this.setState({data: response.data.projekts});
+        }
     }
     _handleLogout = () => {
         console.log("Logging out")
@@ -79,6 +77,9 @@ class PatientView extends Component {
                     </Grid>
                     <Grid item xs={9}>
                         <Grid container spacing={3} alignItems="flex-end">
+                            <Grid item xs={12} className={classes.listitem}>
+                                <ExpansionInsertView />
+                            </Grid>
                             {this.state.data.map(function (d, idx) {
                                 return (<Grid item xs={12} className={classes.listitem}><ExpansionDataView key={idx} value={d} /></Grid>)
                             })}

@@ -9,13 +9,11 @@ import Loginpage from './Loginpage';
 import LandingPage from './LandingPage';
 
 const routing = (
-  <React.StrictMode>
     <Router>
       <Route path="/" component={(props) => <LandingPage {...props} store={Store} />} />
       <Route path="/login" component={(props) => <Loginpage {...props} store={Store} />} />
       <Route path="/app" component={(props) => <DataView {...props} store={Store} />} />
     </Router>
-  </React.StrictMode>
 )
 
 

@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/patient")
+@WebServlet("/patient/projekts")
 public class PatientConnector extends HttpServlet {
 
   private static final Gson gson = new Gson();
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    resp.getWriter().write(gson.toJson(Core.getInstance().handleLogin("root", "root")));
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    String userID;
+    if(req.getHeader("token") != null && (userID = Core.getInstance().checkTokenAndGetUserID(req.getHeader("token"))) != null){
+      resp.getWriter().write(gson.toJson(Core.getInstance().handleGetPatientProjekts(userID)));
+    }
   }
 }

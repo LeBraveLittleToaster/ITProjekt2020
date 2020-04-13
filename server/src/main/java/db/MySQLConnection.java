@@ -2,12 +2,15 @@ package db;
 
 import com.mysql.cj.protocol.Resultset;
 import datatypes.dbtypes.Patient;
+import datatypes.dbtypes.Projekt;
 import datatypes.dbtypes.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MySQLConnection {
 
@@ -67,6 +70,26 @@ public class MySQLConnection {
             set.getString(8)
         );
       }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  public List<Projekt> getProjektsFromUserID(String userID) {
+    try {
+      ResultSet set = DbStatements.createGetProjektsByUserID(this._conn, userID).executeQuery();
+      List<Projekt> projektLst = new LinkedList<>();
+      if(set.next()) {
+        projektLst.add(new Projekt(
+            set.getInt(1),
+            set.getString(2),
+            set.getString(3),
+            set.getString(4),
+            set.getString(5)
+        ));
+      }
+      return projektLst;
     } catch (SQLException e) {
       e.printStackTrace();
     }

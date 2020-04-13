@@ -80,4 +80,11 @@ public class DbStatements {
     statement.setString(1, userID);
     return statement;
   }
+
+  public static PreparedStatement createGetProjektsByUserID(Connection con, String userID) throws SQLException {
+    final String SELECT_PATIENT_STATEMENT = "SELECT id, userID, projektID, projektname, crDate FROM Projekts p WHERE userID=?";
+    PreparedStatement statement = con.prepareStatement(SELECT_PATIENT_STATEMENT);
+    statement.setString(1, userID);
+    return statement;
+  }
 }
