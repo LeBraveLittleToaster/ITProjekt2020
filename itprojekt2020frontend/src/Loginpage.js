@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import { withRouter, Redirect } from 'react-router-dom';
@@ -36,37 +36,40 @@ class Loginpage extends Component {
 
   constructor(props) {
     super(props)
-
-    console.log(this.props.store)
     this.state = {
-      username: undefined,
-      password: undefined
+      loginname: "root1",
+      password: "root",
+      isRequesting : false,
+      isRequestFailed : false
     }
   }
 
   handleLogin = async () => {
-    console.log("login");
-    try{
-    const response = await axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/login");
-    console.log(response.data)
-    }catch(e){
-      console.log(e)
+    this.setState({isRequesting : true});
+    const response = await axios.get("http://localhost:8080/Gradle___itprojekt___server_1_0_SNAPSHOT_war/login",
+      { headers: { 'username': this.state.loginname, 'password': this.state.password } });
+      console.log("Requested user: " + response.status)
+      console.log(response.data)
+    if (response.status === 200 && response.data.isSuccess === true) {
+      console.log("GO!")
+      this.props.store.AppStore.setUserTokenAndLoginname(response.data.token, response.data.user.loginname);
+      this.props.store.AppStore.setUser(response.data.user.userID,
+        response.data.user.crDate, response.data.user.roleID, response.data.user.loginname);
+      this.props.store.AppStore.setPatient(response.data.patient.lastname, response.data.patient.firstname, response.data.patient.street,
+        response.data.patient.plz, response.data.patient.postcode, response.data.patient.cityname);
+      this.props.history.push('/app');
+    } else {
+      this.setState({isRequesting : false});
+      this.setState({isRequestFailed : true});
+
     }
-    this.props.store.AppStore.setUserTokenAndLoginname("token", "loginname");
-    this.props.store.AppStore.setUser("921f07d6-342f-41c3-80d2-e833164c9efe",
-    "2020-04-12T14:56:49.580+02:00", 10, "root");
-    this.props.store.AppStore.setPatient("Schiessle", "Pascal", "hellostr.","123", "12345","Nirvana");
-    console.log(this.context.history)
-    this.props.history.push('/app'); 
-    
   }
 
-  handlePwChange = (e) => {
-    this.setState({ password: e.target.value })
+  _handleUsernameChange = (e) => {
+    this.setState({loginname : e.target.value, isRequestFailed : false})
   }
-
-  handleLoginnameChange = (e) => {
-    this.setState({ loginname: e.target.value })
+  _handlePasswordChange = (e) => {
+    this.setState({password : e.target.value,isRequestFailed : false});
   }
 
   render() {
@@ -83,10 +86,9 @@ class Loginpage extends Component {
                     <Grid item className={classes.padding}>
                       <Grid item>
                         <AccountCircle />
-
                       </Grid>
                       <Grid item>
-                        <TextField id="input-with-icon-grid" onChange={this.handleLoginnameChange} label="Loginname" />
+                        <TextField id="input-with-icon-grid" onChange={this._handleUsernameChange} label="Loginname" defaultValue={this.state.loginname} ></TextField>
                       </Grid>
                     </Grid>
                     <Grid item className={classes.padding}>
@@ -94,12 +96,12 @@ class Loginpage extends Component {
                         <LockTwoToneIcon />
                       </Grid>
                       <Grid item>
-                        <TextField id="input-with-icon-grid" type={'password'} onChange={this.handlePwChange} label="Passwort" />
+                        <TextField id="input-with-icon-grid" type={'password'} onChange={this._handlePasswordChange} label="Passwort" defaultValue={this.state.password} />
                       </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={12} >
-                    <Button variant="contained" color="primary" onClick={this.handleLogin} className={classes.loginbtn} endIcon={<DoubleArrowIcon />}>Login</Button>
+                    <Button variant="contained" color={this.state.isRequestFailed ? "secondary" : "primary"} disabled={this.state.isRequesting} onClick={this.handleLogin} className={classes.loginbtn} endIcon={<DoubleArrowIcon />}>Login</Button>
                   </Grid>
                 </Grid>
               </Paper>

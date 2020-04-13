@@ -12,7 +12,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        {this.props.store.AppStore.token == undefined ? (
+        {this.props.store.AppStore.token === undefined ? (
           <Loginpage store = {this.props.store}/>
         ):(
           <Dataview store = {this.props.store}/>

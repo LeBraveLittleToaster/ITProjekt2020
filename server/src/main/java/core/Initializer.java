@@ -1,12 +1,7 @@
 package core;
 
-import org.apache.catalina.filters.CorsFilter;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.util.EnumSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +12,7 @@ public class Initializer implements ServletContextListener {
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     logger.log(Level.INFO, "Hello logger");
+    Core.getInstance();
   }
 
   @Override

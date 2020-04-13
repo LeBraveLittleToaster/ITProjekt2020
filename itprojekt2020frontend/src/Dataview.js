@@ -10,8 +10,6 @@ class Dataview extends Component {
   }
 
   getDataview(roleID){
-    console.log(roleID)
-    console.log(this.props.store.AppStore.token)
     switch(roleID){
       case 10: 
         return <PatientView store={this.props.store}/>;
@@ -25,9 +23,10 @@ class Dataview extends Component {
   }
 
   render() {
+    console.log(this.props.store.AppStore.token)
     return (
       <div>
-        {this.props.store.AppStore.token != undefined ? (
+        {this.props.store.AppStore.token !== undefined ? (
           <div>{this.getDataview(this.props.store.AppStore.roleID)}</div>
         ) : (
             <Redirect to="/login" />

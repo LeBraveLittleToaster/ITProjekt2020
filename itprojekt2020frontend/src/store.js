@@ -2,29 +2,30 @@ import { observable, computed, decorate, action } from 'mobx';
 import { persist } from 'mobx-persist';
 
 export class AppStore {
+    isHydrated = undefined;
     token = undefined;
-    lastname = "loading lastnam";
-    firstname = "loading firstname";
-    street = "loading street";
-    plz = "loading plz";
-    postcode = "loading postcode";
-    cityname = "loading cityname"
-    userID = "loading userID";
+    lastname = undefined;
+    firstname = undefined;
+    street = undefined;
+    plz = undefined;
+    postcode = undefined;
+    cityname = undefined
+    userID = undefined;
     crDate = undefined;
-    roleID = "loading roleID";
-    loginname = "loading loginname"
+    roleID = undefined;
+    loginname = undefined
 
     constructor() {
         console.log("Creating store")
     }
+    setIsHydrated(isHydrated){
+        this.isHydrated = isHydrated;
+    }
 
     setUserTokenAndLoginname(token, loginname) {
-        if (token !== null && token !== undefined) {
-            this.token = token;
-        }
-        if (loginname !== null && loginname !== undefined) {
-            this.loginname = loginname;
-        }
+        this.token = token;
+        this.loginname = loginname;
+        
     }
 
     setPatient(lastname, firstname, street, plz, postcode, cityname) {
@@ -64,6 +65,7 @@ export class AppStore {
 }
 
 decorate(AppStore, {
+    isHydrated: observable,
     token : [persist, observable],
     lastname : [persist, observable],
     firstname : [persist, observable],
@@ -76,6 +78,7 @@ decorate(AppStore, {
     roleID : [persist, observable],
     loginname : [persist, observable],
     
+    setIsHydrated: action,
     setUserTokenAndLoginname: action,
     setUser: action,
     setPatient: action,

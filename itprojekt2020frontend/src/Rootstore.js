@@ -11,8 +11,10 @@ class RootStore {
 
   constructor() {
     //rehydrate stores here
-    hydrate("app", this.AppStore).then(r =>
+    hydrate("app", this.AppStore).then(r => {
       console.log("app has been hydrated")
+      r.setIsHydrated(true);
+    }
     );
   }
 }

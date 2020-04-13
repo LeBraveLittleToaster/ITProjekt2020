@@ -5,15 +5,30 @@ import datatypes.dbtypes.User;
 import datatypes.nettypes.SimpleUserResponse;
 import db.MySQLConnection;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Core {
+
+  private static Core instance;
+  private Core () {
+    _dbcon = new MySQLConnection("jdbc:mysql://localhost:3306/patients", "root", "root");
+    try {
+      _dbcon.connect();
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static Core getInstance () {
+    if (Core.instance == null) {
+      Core.instance = new Core ();
+    }
+    return Core.instance;
+  }
+
   private final MySQLConnection _dbcon;
   private Map<String, String> userIDTokens = new HashMap<>();
-
-  public Core(MySQLConnection dbcon) {
-    this._dbcon = dbcon;
-  }
 
   public String createToken(String userID){
     String token = UUID.randomUUID().toString();

@@ -30,9 +30,9 @@
             <web-resource-name>TodoConnector</web-resource-name>
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
-        <users-data-constraint>
+        <users-patient-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </users-data-constraint>
+        </users-patient-constraint>
     </security-constraint>
 -->
     <filter>
