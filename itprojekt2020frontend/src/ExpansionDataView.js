@@ -46,6 +46,10 @@ class ExpansionDataView extends Component {
     })
   };
 
+  _generateGraphData = () => {
+
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -65,7 +69,7 @@ class ExpansionDataView extends Component {
                 <ExpansionInsertView />
               </Grid>
               <Grid item xs={12}><Typography variant="h6" gutterBottom>Projekt Daten</Typography></Grid>
-              <ProjectDataView/>
+              <ProjectDataView values={this._generateGraphData}/>
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>

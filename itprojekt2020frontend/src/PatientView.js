@@ -13,10 +13,11 @@ import ExpansionInsertView from './ExpansionInsertView.js'
 
 const mystyle = (theme) => ({
     alignItemsAndJustifyContent: {
-        margin: 100,
         display: 'flex',
+        flexWrap : 'wrap',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        margin: 100
     },
     padding: {
         padding: theme.spacing(3)

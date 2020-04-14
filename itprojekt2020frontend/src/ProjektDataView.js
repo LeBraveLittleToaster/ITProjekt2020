@@ -34,7 +34,7 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 50,
-      data: [65, 120, 80, 141, 56, 55, 40]
+      data: [65, 120, 80, 141, 56, 55, 40,65, 120, 80, 141, 56, 55, 40]
     },
     {
       label: 'BMI',
